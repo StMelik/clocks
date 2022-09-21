@@ -1,5 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
 }
