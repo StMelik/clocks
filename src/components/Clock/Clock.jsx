@@ -1,40 +1,30 @@
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { getTime } from '../../utils/getCurrentTime'
+import { TIME_TYPE } from '../../utils/constants'
 import './Clock.css'
 
-import { useState, useEffect } from 'react'
-import { getCurrentTime } from '../../utils/getCurrentTime'
-import { useRef } from 'react'
-import { fetchData } from '../../utils/server/fetchData'
-
 function Clock() {
-  const [currentTime, setCurrentTime] = useState(getCurrentTime())
-  const [timeZones, setTimeZones] = useState([])
+  const { timeZones, loading, error } = useSelector((s) => s.zone)
+  const { currentDate } = useSelector((s) => s.date)
   const [zone, setZone] = useState(null)
-  const timer = useRef(null)
-
-  useEffect(() => {
-    fetchData(3).then(setTimeZones)
-  }, [])
-
-  useEffect(() => {
-    setCurrentTime(getCurrentTime(zone))
-    updateTime()
-  }, [zone])
-
-  function updateTime() {
-    if (timer.current) clearInterval(timer.current)
-
-    timer.current = setInterval(() => {
-      setCurrentTime(getCurrentTime(zone))
-    }, 1000)
-  }
 
   function getTimeType(type) {
-    return +currentTime.split(':')[type]
+    switch (type) {
+      case TIME_TYPE.SEC:
+        return +getTime(currentDate, zone).split(':')[2]
+      case TIME_TYPE.MIN:
+        return +getTime(currentDate, zone).split(':')[1]
+      case TIME_TYPE.HOUR:
+        return +getTime(currentDate, zone).split(':')[0]
+    }
   }
 
   function getDegHour() {
-    return getTimeType(0) * 30 + getTimeType(1) * 0.5
+    return getTimeType(TIME_TYPE.HOUR) * 30 + getTimeType(TIME_TYPE.MIN) * 0.5
   }
+
+  if (error) return <p>{error}</p>
 
   return (
     <div className="clock">
@@ -50,30 +40,35 @@ function Clock() {
           ))}
         <div
           className="clock__time-arrow clock__time-arrow_second"
-          style={{ transform: `rotate(${getTimeType(2) * 6}deg)` }}
+          style={{ transform: `rotate(${getTimeType(TIME_TYPE.SEC) * 6}deg)` }}
         />
         <div
           className="clock__time-arrow clock__time-arrow_minute"
-          style={{ transform: `rotate(${getTimeType(1) * 6}deg)` }}
+          style={{ transform: `rotate(${getTimeType(TIME_TYPE.MIN) * 6}deg)` }}
         />
         <div
           className="clock__time-arrow clock__time-arrow_hour"
           style={{ transform: `rotate(${getDegHour()}deg)` }}
         />
       </div>
-      <div className="clock__numeric">{currentTime}</div>
-      <select
-        value={zone}
-        onChange={(e) => setZone(e.target.value)}
-        className="clock__zone"
-        name="zone"
-      >
-        {timeZones.map(({ name, timezone }) => (
-          <option key={timezone} value={timezone}>
-            {name}
-          </option>
-        ))}
-      </select>
+      <div className="clock__numeric">{getTime(currentDate, zone)}</div>
+
+      {loading ? (
+        <div className="preloader">Загрузка...</div>
+      ) : (
+        <select
+          value={zone}
+          onChange={(e) => setZone(e.target.value)}
+          className="clock__zone"
+          name="zone"
+        >
+          {timeZones.map(({ name, timezone }) => (
+            <option key={timezone} value={timezone}>
+              {name}
+            </option>
+          ))}
+        </select>
+      )}
     </div>
   )
 }

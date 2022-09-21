@@ -1,7 +1,7 @@
-export function getCurrentTime(zone) {
-  const date = new Date()
+export function getTime(date, zone) {
+  const zoneDate = new Date(date)
 
-  if (zone) date.setHours(date.getUTCHours() + +zone)
+  if (zone) zoneDate.setHours(zoneDate.getUTCHours() + +zone)
 
-  return date.toLocaleTimeString()
+  return zoneDate.toLocaleTimeString()
 }
