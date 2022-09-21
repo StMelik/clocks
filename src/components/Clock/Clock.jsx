@@ -1,13 +1,19 @@
 import './Clock.css'
-import timeZones from '../../utils/timezones.json'
+
 import { useState, useEffect } from 'react'
 import { getCurrentTime } from '../../utils/getCurrentTime'
 import { useRef } from 'react'
+import { fetchData } from '../../utils/server/fetchData'
 
 function Clock() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime())
+  const [timeZones, setTimeZones] = useState([])
   const [zone, setZone] = useState(null)
   const timer = useRef(null)
+
+  useEffect(() => {
+    fetchData(3).then(setTimeZones)
+  }, [])
 
   useEffect(() => {
     setCurrentTime(getCurrentTime(zone))
