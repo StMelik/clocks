@@ -14,8 +14,12 @@ function ClockArrow({ currentDate, zone }) {
     }
   }
 
-  function getDegHour() {
+  function getDegHourArrow() {
     return getTimeType(TIME_TYPE.HOUR) * 30 + getTimeType(TIME_TYPE.MIN) * 0.5
+  }
+
+  function getDegMinuteArrow() {
+    return getTimeType(TIME_TYPE.MIN) * 6 + getTimeType(TIME_TYPE.SEC) * 0.1
   }
 
   return (
@@ -35,11 +39,11 @@ function ClockArrow({ currentDate, zone }) {
       />
       <div
         className="clock__time-arrow clock__time-arrow_minute"
-        style={{ transform: `rotate(${getTimeType(TIME_TYPE.MIN) * 6}deg)` }}
+        style={{ transform: `rotate(${getDegMinuteArrow()}deg)` }}
       />
       <div
         className="clock__time-arrow clock__time-arrow_hour"
-        style={{ transform: `rotate(${getDegHour()}deg)` }}
+        style={{ transform: `rotate(${getDegHourArrow()}deg)` }}
       />
     </div>
   )
