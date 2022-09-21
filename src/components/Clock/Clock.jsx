@@ -17,6 +17,14 @@ function Clock() {
     }, 1000)
   }
 
+  function getTimeType(type) {
+    return +currentTime.split(':')[type]
+  }
+
+  function getDegHour() {
+    return getTimeType(0) * 30 + getTimeType(1) * 0.5
+  }
+
   return (
     <div className="clock">
       <div className="clock__arrow">
@@ -29,9 +37,18 @@ function Clock() {
               style={{ transform: `rotate(${i * 30}deg)` }}
             />
           ))}
-        <div className="clock__time-arrow clock__time-arrow_second" />
-        <div className="clock__time-arrow clock__time-arrow_minute" />
-        <div className="clock__time-arrow clock__time-arrow_hour" />
+        <div
+          className="clock__time-arrow clock__time-arrow_second"
+          style={{ transform: `rotate(${getTimeType(2) * 6}deg)` }}
+        />
+        <div
+          className="clock__time-arrow clock__time-arrow_minute"
+          style={{ transform: `rotate(${getTimeType(1) * 6}deg)` }}
+        />
+        <div
+          className="clock__time-arrow clock__time-arrow_hour"
+          style={{ transform: `rotate(${getDegHour()}deg)` }}
+        />
       </div>
       <div className="clock__numeric">{currentTime}</div>
       <select className="clock__zone" name="zone">
