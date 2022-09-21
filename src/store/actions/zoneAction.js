@@ -1,4 +1,4 @@
-import { fetchData } from '../../utils/server/fetchData'
+import { fetchData } from '../../server/fetchData'
 import {
   FETCH_ZONE,
   FETCH_ZONE_ERROR,
