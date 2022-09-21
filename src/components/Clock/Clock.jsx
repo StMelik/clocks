@@ -2,18 +2,23 @@ import './Clock.css'
 import timeZones from '../../utils/timezones.json'
 import { useState, useEffect } from 'react'
 import { getCurrentTime } from '../../utils/getCurrentTime'
+import { useRef } from 'react'
 
 function Clock() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime())
+  const [zone, setZone] = useState(null)
+  const timer = useRef(null)
 
   useEffect(() => {
+    setCurrentTime(getCurrentTime(zone))
     updateTime()
-  }, [])
+  }, [zone])
 
   function updateTime() {
-    setInterval(() => {
-      const currentTime = getCurrentTime()
-      setCurrentTime(currentTime)
+    if (timer.current) clearInterval(timer.current)
+
+    timer.current = setInterval(() => {
+      setCurrentTime(getCurrentTime(zone))
     }, 1000)
   }
 
@@ -51,7 +56,12 @@ function Clock() {
         />
       </div>
       <div className="clock__numeric">{currentTime}</div>
-      <select className="clock__zone" name="zone">
+      <select
+        value={zone}
+        onChange={(e) => setZone(e.target.value)}
+        className="clock__zone"
+        name="zone"
+      >
         {timeZones.map(({ name, timezone }) => (
           <option key={timezone} value={timezone}>
             {name}

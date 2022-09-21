@@ -1,8 +1,7 @@
-export function getCurrentTime() {
-  return new Date().toLocaleString('ru', {
-    timezone: 'UTC',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  })
+export function getCurrentTime(zone) {
+  const date = new Date()
+
+  if (zone) date.setHours(date.getUTCHours() + +zone)
+
+  return date.toLocaleTimeString()
 }
