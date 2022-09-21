@@ -9,7 +9,7 @@ export const fetchTimeZonesAction = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_ZONE })
     try {
-      fetchData(2.5).then((res) => {
+      fetchData(2500).then((res) => {
         dispatch({ type: FETCH_ZONE_SUCCSESS, payload: res })
       })
     } catch (e) {

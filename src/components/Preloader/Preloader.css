@@ -1,0 +1,10 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 34px;
+  font-size: 20px;
+  background-color: #cccccc;
+  border: 1px solid #767676;
+}
