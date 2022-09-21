@@ -1,4 +1,12 @@
 .clock__numeric {
   text-align: center;
-  font-size: 24px;
+  font-size: 40px;
+  font-family: 'Digital Counter 7';
+  border: 5px solid #000;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 5px;
+  box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+  background-color: #0775cf;
+  color: #c5dd00;
 }

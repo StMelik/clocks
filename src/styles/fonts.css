@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Digital Counter 7';
+  src: local('Digital Counter 7'),
+    url('../utils/fonts/Digital Counter 7.woff2') format('woff2'),
+    url('../utils/fonts/Digital Counter 7.woff') format('woff');
+}

@@ -29,21 +29,31 @@ function ClockArrow({ currentDate, zone }) {
         .map((n, i) => (
           <div
             key={i}
-            className="clock__time-serif"
+            className="clock__serif"
             style={{ transform: `rotate(${i * 30}deg)` }}
+          ></div>
+        ))}
+      {Array(60)
+        .fill(1)
+        .map((n, i) => (
+          <div
+            key={i}
+            className="clock__serif-min"
+            style={{ transform: `rotate(${i * 6}deg)` }}
           />
         ))}
+
       <div
-        className="clock__time-arrow clock__time-arrow_second"
-        style={{ transform: `rotate(${getTimeType(TIME_TYPE.SEC) * 6}deg)` }}
+        className="clock__time-arrow clock__time-arrow_hour"
+        style={{ transform: `rotate(${getDegHourArrow()}deg)` }}
       />
       <div
         className="clock__time-arrow clock__time-arrow_minute"
         style={{ transform: `rotate(${getDegMinuteArrow()}deg)` }}
       />
       <div
-        className="clock__time-arrow clock__time-arrow_hour"
-        style={{ transform: `rotate(${getDegHourArrow()}deg)` }}
+        className="clock__time-arrow clock__time-arrow_second"
+        style={{ transform: `rotate(${getTimeType(TIME_TYPE.SEC) * 6}deg)` }}
       />
     </div>
   )
