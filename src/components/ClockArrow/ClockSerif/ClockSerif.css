@@ -1,0 +1,24 @@
+.clock__serif,
+.clock__serif-min {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+
+.clock__serif::before,
+.clock__serif-min::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 15px;
+  border-radius: 100px;
+  background-color: #000;
+}
+
+.clock__serif-min::before {
+  width: 4px;
+  height: 10px;
+}

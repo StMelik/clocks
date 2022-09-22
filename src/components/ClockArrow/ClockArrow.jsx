@@ -1,59 +1,29 @@
-import { getTime } from '../../utils/getCurrentTime'
-import { TIME_TYPE } from '../../utils/constants'
 import './ClockArrow.css'
+import { TIME_TYPE } from '../../utils/constants'
+import { getDegArrorwType } from '../../utils/getDegArrorwType'
+import ClockSerif from './ClockSerif/ClockSerif'
 
-function ClockArrow({ currentDate, zone }) {
-  function getTimeType(type) {
-    switch (type) {
-      case TIME_TYPE.SEC:
-        return +getTime(currentDate, zone).split(':')[2]
-      case TIME_TYPE.MIN:
-        return +getTime(currentDate, zone).split(':')[1]
-      case TIME_TYPE.HOUR:
-        return +getTime(currentDate, zone).split(':')[0]
-    }
-  }
-
-  function getDegHourArrow() {
-    return getTimeType(TIME_TYPE.HOUR) * 30 + getTimeType(TIME_TYPE.MIN) * 0.5
-  }
-
-  function getDegMinuteArrow() {
-    return getTimeType(TIME_TYPE.MIN) * 6 + getTimeType(TIME_TYPE.SEC) * 0.1
-  }
-
+function ClockArrow({ currentTime }) {
   return (
     <div className="clock__arrow">
-      {Array(12)
-        .fill(1)
-        .map((n, i) => (
-          <div
-            key={i}
-            className="clock__serif"
-            style={{ transform: `rotate(${i * 30}deg)` }}
-          ></div>
-        ))}
-      {Array(60)
-        .fill(1)
-        .map((n, i) => (
-          <div
-            key={i}
-            className="clock__serif-min"
-            style={{ transform: `rotate(${i * 6}deg)` }}
-          />
-        ))}
-
+      <ClockSerif />
       <div
         className="clock__time-arrow clock__time-arrow_hour"
-        style={{ transform: `rotate(${getDegHourArrow()}deg)` }}
+        style={{
+          transform: `rotate(${getDegArrorwType(currentTime, TIME_TYPE.HOUR)})`,
+        }}
       />
       <div
         className="clock__time-arrow clock__time-arrow_minute"
-        style={{ transform: `rotate(${getDegMinuteArrow()}deg)` }}
+        style={{
+          transform: `rotate(${getDegArrorwType(currentTime, TIME_TYPE.MIN)})`,
+        }}
       />
       <div
         className="clock__time-arrow clock__time-arrow_second"
-        style={{ transform: `rotate(${getTimeType(TIME_TYPE.SEC) * 6}deg)` }}
+        style={{
+          transform: `rotate(${getDegArrorwType(currentTime, TIME_TYPE.SEC)})`,
+        }}
       />
     </div>
   )

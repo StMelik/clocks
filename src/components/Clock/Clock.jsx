@@ -5,18 +5,19 @@ import Preloader from '../Preloader/Preloader'
 import SelectZone from '../SelectZone/SelectZone'
 import ClockArrow from '../ClockArrow/ClockArrow'
 import ClockNumeric from '../ClockNumeric/ClockNumeric'
+import { useTime } from '../../hooks/useTime'
 
 function Clock() {
   const { timeZones, loading, error } = useSelector((s) => s.zone)
-  const { currentDate } = useSelector((s) => s.date)
   const [zone, setZone] = useState('')
+  const { currentTime } = useTime(zone)
 
   if (error) return <p>{error}</p>
 
   return (
     <div className="clock">
-      <ClockArrow currentDate={currentDate} zone={zone} />
-      <ClockNumeric currentDate={currentDate} zone={zone} />
+      <ClockArrow currentTime={currentTime} />
+      <ClockNumeric currentTime={currentTime} />
       {loading ? (
         <Preloader />
       ) : (
