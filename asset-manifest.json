@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/StMelik/clocks/static/css/main.97cbb82b.css",
-    "main.js": "/StMelik/clocks/static/js/main.d354e5f9.js",
-    "static/media/Digital Counter 7.woff2": "/StMelik/clocks/static/media/Digital Counter 7.8b383f50c4d858e34376.woff2",
-    "static/media/Digital Counter 7.woff": "/StMelik/clocks/static/media/Digital Counter 7.831af0ea82c1afe2b17b.woff",
-    "index.html": "/StMelik/clocks/index.html",
-    "main.97cbb82b.css.map": "/StMelik/clocks/static/css/main.97cbb82b.css.map",
-    "main.d354e5f9.js.map": "/StMelik/clocks/static/js/main.d354e5f9.js.map"
+    "main.css": "/clocks/static/css/main.3c946f94.css",
+    "main.js": "/clocks/static/js/main.d354e5f9.js",
+    "static/media/Digital Counter 7.woff2": "/clocks/static/media/Digital Counter 7.8b383f50c4d858e34376.woff2",
+    "static/media/Digital Counter 7.woff": "/clocks/static/media/Digital Counter 7.831af0ea82c1afe2b17b.woff",
+    "index.html": "/clocks/index.html",
+    "main.3c946f94.css.map": "/clocks/static/css/main.3c946f94.css.map",
+    "main.d354e5f9.js.map": "/clocks/static/js/main.d354e5f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.97cbb82b.css",
+    "static/css/main.3c946f94.css",
     "static/js/main.d354e5f9.js"
   ]
 }
