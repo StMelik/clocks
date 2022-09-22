@@ -30,3 +30,7 @@
 
 - Запустить проект:  
   `npm start`
+
+# Ссылки
+
+- [Ссылка на Проект](https://stmelik.github.io/clocks/)
