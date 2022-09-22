@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.55137086.css",
+    "main.js": "/static/js/main.d354e5f9.js",
+    "static/media/Digital Counter 7.woff2": "/static/media/Digital Counter 7.8b383f50c4d858e34376.woff2",
+    "static/media/Digital Counter 7.woff": "/static/media/Digital Counter 7.831af0ea82c1afe2b17b.woff",
+    "index.html": "/index.html",
+    "main.55137086.css.map": "/static/css/main.55137086.css.map",
+    "main.d354e5f9.js.map": "/static/js/main.d354e5f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55137086.css",
+    "static/js/main.d354e5f9.js"
+  ]
+}
