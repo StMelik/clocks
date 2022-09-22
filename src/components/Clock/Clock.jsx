@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import './Clock.css'
-import Preloader from '../Preloader/Preloader'
+import Alert from '../Alert/Alert'
 import SelectZone from '../SelectZone/SelectZone'
 import ClockArrow from '../ClockArrow/ClockArrow'
 import ClockNumeric from '../ClockNumeric/ClockNumeric'
@@ -13,21 +13,20 @@ function Clock() {
   const [zone, setZone] = useState(getClientTimeZone())
   const { currentTime } = useTime(zone)
 
-  if (error) return <p>{error}</p>
-
   return (
     <div className="clock">
       <ClockArrow currentTime={currentTime} />
       <ClockNumeric currentTime={currentTime} />
-      {loading ? (
-        <Preloader />
-      ) : (
+      {!loading && !error && (
         <SelectZone
           timeZones={timeZones}
           value={zone}
           onChange={(e) => setZone(e.target.value)}
         />
       )}
+
+      {loading && <Alert text="Загрузка..." />}
+      {error && <Alert text={error} />}
     </div>
   )
 }
