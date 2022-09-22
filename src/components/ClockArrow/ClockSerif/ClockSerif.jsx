@@ -17,6 +17,7 @@ function ClockSerif() {
         .fill(1)
         .map((_, i) => (
           <div
+            key={i}
             className="clock__serif-num-wrapper"
             style={{ transform: `rotate(${(i + 1) * 30}deg)` }}
           >
